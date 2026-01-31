@@ -50,6 +50,10 @@ After a test run, open:
 ./test-output/extent-report.html
 ```
 
+## Logging
+Framework-level logging is handled by `FrameworkLogger` (SLF4J). It captures configuration load
+issues and Appium session startup failures to centralize error handling.
+
 ## CI/CD
 This project includes a GitHub Actions workflow that builds the Maven project and validates the
 TestNG suite configuration on every push and pull request.

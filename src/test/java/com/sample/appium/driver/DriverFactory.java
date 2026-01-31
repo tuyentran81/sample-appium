@@ -23,11 +23,24 @@ public final class DriverFactory {
 
         MutableCapabilities options = buildOptions(platformName, appType);
         try {
+            com.sample.appium.framework.FrameworkLogger.info(
+                    "Starting Appium session for " + platformName + " (" + appType + ")"
+            );
             AppiumDriver driver = new AppiumDriver(new URL(remoteUrl), options);
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
             DRIVER.set(driver);
         } catch (MalformedURLException e) {
+            com.sample.appium.framework.FrameworkLogger.error(
+                    "Invalid Appium server URL: " + remoteUrl,
+                    e
+            );
             throw new IllegalArgumentException("Invalid Appium server URL: " + remoteUrl, e);
+        } catch (RuntimeException e) {
+            com.sample.appium.framework.FrameworkLogger.error(
+                    "Failed to start Appium session at " + remoteUrl,
+                    e
+            );
+            throw e;
         }
     }
 

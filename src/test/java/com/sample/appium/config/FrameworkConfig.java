@@ -15,6 +15,10 @@ public final class FrameworkConfig {
         try (InputStream inputStream = Files.newInputStream(path)) {
             PROPERTIES.load(inputStream);
         } catch (IOException e) {
+            com.sample.appium.framework.FrameworkLogger.error(
+                    "Unable to load configuration from " + path,
+                    e
+            );
             throw new IllegalStateException("Unable to load configuration: " + path, e);
         }
     }
