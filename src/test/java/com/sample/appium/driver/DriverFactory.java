@@ -57,7 +57,7 @@ public final class DriverFactory {
                 options.setAutoWebview(true);
             }
             if ("web".equalsIgnoreCase(appType)) {
-                options.setBrowserName(FrameworkConfig.getOrDefault("browserName", "Safari"));
+                options.setCapability("browserName", FrameworkConfig.getOrDefault("browserName", "Safari"));
             }
             return options;
         }
@@ -74,7 +74,7 @@ public final class DriverFactory {
             options.setAutoWebview(true);
         }
         if ("web".equalsIgnoreCase(appType)) {
-            options.setBrowserName(FrameworkConfig.getOrDefault("browserName", "Chrome"));
+            options.setCapability("browserName", FrameworkConfig.getOrDefault("browserName", "Chrome"));
         }
         return options;
     }
